@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - Offline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #00d4ff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .offline-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            border: 2px solid #00d4ff;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            max-width: 500px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00d4ff;
+            letter-spacing: 8px;
+        }
+
+        .arc-reactor-offline {
+            width: 100px;
+            height: 100px;
+            margin: 30px auto;
+            position: relative;
+            opacity: 0.5;
+        }
+
+        .arc-reactor-core-offline {
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #666 0%, #333 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+
+        .arc-reactor-ring-offline {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #666;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .message {
+            font-size: 1.3em;
+            color: #66e0ff;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .status {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: #fca5a5;
+        }
+
+        .retry-button {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border: none;
+            color: #0a0e27;
+            padding: 15px 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+        }
+
+        .retry-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+        }
+
+        .info {
+            font-size: 0.9em;
+            color: #66e0ff;
+            margin-top: 30px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <h1>JARVIS</h1>
+        
+        <div class="arc-reactor-offline">
+            <div class="arc-reactor-ring-offline"></div>
+            <div class="arc-reactor-core-offline"></div>
+        </div>
+
+        <div class="status">
+            ⚠️ Systems Offline
+        </div>
+
+        <div class="message">
+            I apologize, Sir. It appears we've lost connection to the network.
+        </div>
+
+        <div class="message">
+            Please check your internet connection and try again.
+        </div>
+
+        <button class="retry-button" onclick="window.location.reload()">
+            Reconnect
+        </button>
+
+        <div class="info">
+            JARVIS requires an active internet connection to function properly.
+        </div>
+    </div>
+
+    <script>
+        // Auto-retry connection every 5 seconds
+        setInterval(() => {
+            if (navigator.onLine) {
+                window.location.reload();
+            }
+        }, 5000);
+
+        // Listen for online event
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>
