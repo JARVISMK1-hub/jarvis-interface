@@ -269,8 +269,8 @@ class JarvisVoice {
             
             // ===== MOVIE JARVIS VOICE SETTINGS =====
             // Natural, conversational pace like the movies
-            utterance.rate = 1.15;       // Faster, more natural (movie JARVIS speaks quickly)
-            utterance.pitch = 0.9;       // Slightly deeper, professional
+            utterance.rate = 1.2;       // Faster, more natural (movie JARVIS speaks quickly)
+            utterance.pitch = 0.8;       // Slightly deeper, professional
             utterance.volume = 1.0;      // Maximum volume
             utterance.lang = 'en-GB';    // British English (JARVIS accent)
             
