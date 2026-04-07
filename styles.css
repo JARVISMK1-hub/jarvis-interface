@@ -434,6 +434,29 @@ body {
 .chat-container::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 217, 255, 0.5);
 }
+// In your chat component
+import { useEffect, useRef } from 'react';
+
+function ChatComponent() {
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, ,[messages]); // Trigger whenever messages change
+
+  return (
+    <div className="chat-container">
+      {messages.map((msg, idx) => (
+        <div key={idx} className="message">{msg.content}</div>
+      ))}
+      <div ref={messagesEndRef} /> {/* Invisible anchor at bottom */}
+    </div>
+  );
+}
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
